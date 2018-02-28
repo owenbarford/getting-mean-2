@@ -1,0 +1,23 @@
+extends layout
+
+include _includes/sharedHTMLfunctions
+
+block content
+  .row.banner
+    .col-12
+      h1 SupportApp
+        small &nbsp;Agent Details
+  .row
+    .col-12.col-md-8
+      .card
+        .card-block
+          h4
+            a(href="/agent") Owen Barford
+             small &nbsp;
+            p.department Back Office
+            p.products 
+              span.badge.badge-warning Accounts
+              span.badge.badge-warning Taxation
+              span.badge.badge-warning Technical Services
+    .col-12.col-md-4
+      p.lead Looking for telephone information on all consultants in NewVoiceMedia. 
