@@ -5,7 +5,7 @@ const homelist = function(req, res){
  
 /* GET 'Agent info' page */
 const agentInfo = function(req, res){
-    res.render('index', { title: 'Agent info' }); 
+    res.render('agent-info', { title: 'Agent info' }); 
 }; 
 
 module.exports = {   
