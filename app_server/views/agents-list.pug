@@ -5,19 +5,22 @@ include _includes/sharedHTMLfunctions
 block content
   .row.banner
     .col-12
-      h1 SupportApp
-        small &nbsp;Agent Details
+      h1= pageHeader.title
+        small &nbsp;#{pageHeader.strapline}
   .row
     .col-12.col-md-8
-      .card
-        .card-block
-          h4
-            a(href="/agent") Owen Barford
-             small &nbsp;
-            p.department Back Office
-            p.products 
-              span.badge.badge-warning Accounts
-              span.badge.badge-warning Taxation
-              span.badge.badge-warning Technical Services
+      each agent in agents
+        .card
+          .card-block
+            h4
+              a(href="/agent")= agent.name
+              small &nbsp;
+            p.role= agent.role
+            p.team= agent.team
+            p.address= agent.address
+            p.department= agent.department
+            .products 
+              each product in agent.products
+                span.badge.badge-warning= product
     .col-12.col-md-4
-      p.lead Looking for telephone information on all consultants in NewVoiceMedia. 
+      p.lead= sidebar

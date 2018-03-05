@@ -5,25 +5,32 @@ include _includes/sharedHTMLfunctions
 block content
   .row.banner
     .col-12
-      h1 Owen Barford
+      h1= pageHeader.title
   .row
     .col-12.col-lg-9
       .row
         .col-12.col-md-6
-          p.rating
-          p Croner House, 145 London Road, Kingston upon Thames, KT2 6SR
+          p.role= agent.role
+          p.roleDesc= agent.roleDesc
+          p.address= agent.address       
           .card.card-primary
             .card-block
               h2.card-title Working Hours
-              p.card-text Monday - Friday : 08:30 - 16:30
-              p.card-text Saturday: not working
-              p.card-text Sunday: not working
+              each time in agent.workingTimes
+                p.card-text
+                  | #{time.days} : 
+                  if time.closed
+                    | not working
+                  else
+                    | #{time.start} - #{time.end}
           .card.card-primary
             .card-block
-              h2.card-title Products  
-              p.card-text CCH Central suite                    
-              p.card-text CCH Practice Management
-              p.card-text CCH KPI Monitoring
+              h2.card-title Products
+              each product in agent.products
+                span.badge.badge-warning
+                  i.fa.fa-check
+                  | &nbsp;#{product}
+                | &nbsp;        
     .col-12.col-lg-3
-      p.lead Senior Technical Advisor
-      p Looks after all technical areas within the support team environment
+      p.lead #{agent.name} #{sidebar.context}
+      
