@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
-const dbURI = 'mongodb://DESKTOP-9RIRJPH/SupportApp';
+let dbURI = 'mongodb://DESKTOP-9RIRJPH/SupportApp';
+if (process.env.NODE_ENV === 'production'){
+  dbURI = process.env.MONGODB_URI;
+}
 
 mongoose.connect(dbURI);
 
