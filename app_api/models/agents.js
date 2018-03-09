@@ -13,7 +13,7 @@ const workingTimesSchema = new mongoose.Schema({
     }
 })
 
-const agentInfoSchema = new mongoose.Schema({
+const agentSchema = new mongoose.Schema({ 
     name: {
         type: String,
         required: true
@@ -25,6 +25,11 @@ const agentInfoSchema = new mongoose.Schema({
     roleDesc: String,
     address: String,
     products: [String],
-    team: String,
-    workingTimes: [workingTimesSchema]
-})
+    team: {
+        type: String,
+        required: true
+    }
+    
+});
+
+mongoose.model('Agent', agentSchema);

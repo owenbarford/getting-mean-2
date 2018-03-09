@@ -13,7 +13,7 @@ block content
         .card
           .card-block
             h4
-              a(href="/agent")= agent.name
+              a(href=`/agent/${agent._id}`)= agent.name
               small &nbsp;
             p.role= agent.role
             p.team= agent.team
