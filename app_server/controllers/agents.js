@@ -3,7 +3,7 @@ const apiOptions = {
     server : 'http://localhost:3000'
 };
 if (process.env.NODE_ENV === 'production') {
-    apiOptions.server = 'https://aqueous-peak-91782.herokuapp.com/';
+    apiOptions.server = 'https://aqueous-peak-91782.herokuapp.com';
 }
 
 // PUBLIC EXPOSED METHODS
