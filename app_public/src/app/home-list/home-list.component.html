@@ -1,0 +1,17 @@
+<div class="card" *ngFor="let agent of agents">
+    <div class="card-block">
+      <h4>
+        <a href="/agent/{{agent._id}}">{{agent.name}}</a>
+        <small>&nbsp;</small>
+      </h4>
+      <p class="role">{{agent.role}}</p>
+      <p class="roleDesc">{{agent.roleDesc}}</p>
+      <p class="team">{{agent.team}}</p>
+      <p class="address">{{agent.address | uppercase}}</p>
+      <div class="products">
+         <span *ngFor="let product of agent.products" class="badge badge-warning">{{product}}</span>
+      </div>
+    </div>
+  </div>
+
+

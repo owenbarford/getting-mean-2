@@ -6,26 +6,4 @@ block content
       h1= title
   .row
     .col-12.col-lg-8
-      p 
-        | SupportApp was created to give better visibility of Support Team consultant information from NewVoiceMedia. 
-        | The current limitations of the NewVoiceMedia Wallboard prompted the need for a new application that was
-        | capable of utilising the NVM API to display various IVR related information across the entire support team
-        | with a completely device agnostic approach. SupportApp will work on a desktop, tablet and phone and has
-        | multiple display formats to cope with the available screen real estate of each device.
-        | <br /><br />
-        | SupportApp is written using the MEAN stack of platforms and frameworks to create both the front and
-        | and backend components. Deployment is via the Salesforce Heroku platform.
-        | <br /><br />
-        | M = Mongoose (Database)
-        | <br /><br />
-        | E = Express (Web Server)
-        | <br /><br />
-        | A = Angular (JavaScript Framework)
-        | <br /><br />
-        | N = Node (Backend Server)
-        | <br /><br />
-        | SupportApp is easy to navigate and simple to use, requiring absolutely no end-user training.
-        | <br /><br />
-        | SupportApp is the creation of Owen Barford - Senior Technical Advisor - WKUK Support Team.
-        | <br /><br />
-        | User enhancements and feedback are welcome: Owen.Barford@WoltersKluwer.co.uk.
+      p !{(content).replace(/\n/g, '<br/>')}

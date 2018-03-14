@@ -9,18 +9,20 @@ block content
         small &nbsp;#{pageHeader.strapline}
   .row
     .col-12.col-md-8
-      each agent in agents
-        .card
-          .card-block
-            h4
-              a(href=`/agent/${agent._id}`)= agent.name
-              small &nbsp;
-            p.role= agent.role
-            p.team= agent.team
-            p.address= agent.address
-            p.department= agent.department
-            .products 
-              each product in agent.products
-                span.badge.badge-warning= product
+      .error= message
+      app-home-list Loading...
+        //- each agent in agents
+        //-   .card
+        //-     .card-block
+        //-       h4
+        //-         a(href=`/agent/${agent._id}`)= agent.name
+        //-         small &nbsp;
+        //-       p.role= agent.role
+        //-       p.team= agent.team
+        //-       p.address= agent.address
+        //-       p.department= agent.department
+        //-       .products 
+        //-         each product in agent.products
+        //-           span.badge.badge-warning= product
     .col-12.col-md-4
       p.lead= sidebar
