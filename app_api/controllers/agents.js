@@ -19,7 +19,7 @@ const agentsCreate = function(req, res) {
         address: req.body.address,
         products: req.body.products.split(","),
         team: req.body.team,
-        openingTimes: [{
+        workingTimes: [{
             days: req.body.days,
             opening: req.body.start,
             closing: req.body.end,

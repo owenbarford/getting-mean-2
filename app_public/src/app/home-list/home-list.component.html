@@ -1,7 +1,7 @@
 <div class="card" *ngFor="let agent of agents">
     <div class="card-block">
       <h4>
-        <a href="/agent/{{agent._id}}">{{agent.name}}</a>
+        <a routerLink="/agent/{{agent._id}}">{{agent.name}}</a>
         <small>&nbsp;</small>
       </h4>
       <p class="role">{{agent.role}}</p>
