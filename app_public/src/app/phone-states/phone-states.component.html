@@ -1,0 +1,32 @@
+<app-page-header [content]="pageContent.header"></app-page-header>
+<div class="col-12 col-md-8">
+    <div class="card">
+        <p class="count">List of Agents States</p>
+    </div>
+    <div>
+        <select #selectElem (change)="applyFilter(selectElem.value)">
+            <option *ngFor="let agent of listAgents" [value]="agent.id">
+                {{agent.name}}
+            </option>
+        </select>
+        <table>
+            <thead>
+                <th (click)="orderByField = 'agentId'">Agent ID</th>
+                <th  (click)="orderByField = 'name'">Agent Name</th>
+                <th>Last State</th>
+                <th>Time in Last State</th>
+                <th>State Changed At</th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let state of visibleAgentStates | orderBy:orderByField">
+                <td>{{state?.agentId}}</td>
+                <td>{{state?.name}}</td>
+                <td>{{state?.state}}</td>
+                <td>{{state?.duration}}</td>
+                <td>{{state?.stateChangedAt | date :'HH:mm:ss'}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<app-sidebar class="col-12 col-md-4" [content]="pageContent.sidebar"></app-sidebar>

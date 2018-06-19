@@ -7,13 +7,29 @@
       <div id="navbarMain" class="navbar-collapse collapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item" routerLinkActive="active">
-            <a routerLink="about" class="nav-link">About </a>
+            <a routerLink="about" class="nav-link">About</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a routerLink="profile" class="nav-link">Profile</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a routerLink="phone" class="nav-link">Phone</a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a routerLink="phonestates" class="nav-link">Phone States</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-right">
+          <li>
+            <a *ngIf="!authService.isAuthenticated()" routerLink="login" class="nav-link">Login</a>            
+            <a *ngIf="authService.isAuthenticated()" routerLink="login" class="nav-link">Logout</a>            
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <div class="container">
+    <app-alert></app-alert>
     <router-outlet></router-outlet>
     <footer>
       <div class="row">

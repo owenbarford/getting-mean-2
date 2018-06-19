@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-let dbURI = 'mongodb://DESKTOP-9RIRJPH/SupportApp';
+var config = require('../config.json');
+let dbURI = config.connectionString;
 if (process.env.NODE_ENV === 'production'){
   dbURI = process.env.MONGODB_URI;
 }
@@ -54,3 +55,6 @@ const gracefulShutdown = (msg, callback) => {
   });
 
 require('./agents');
+require('./listagents');
+require('./users');
+

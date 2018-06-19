@@ -14,9 +14,9 @@ export class HomepageComponent implements OnInit {
     sidebar: 'Looking for information on the Support Team? Find consultant information here using SupportApp.'
   };
 
-  constructor() { }
+  constructor () {
+  }
 
   ngOnInit() {
   }
-
 }

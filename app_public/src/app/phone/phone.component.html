@@ -1,0 +1,39 @@
+<app-page-header [content]="pageContent.header"></app-page-header>
+<div class="col-12 col-md-8">
+    <div class="agentTeams">
+        <button (click)="applyFilter('')">All</button>
+        <button (click)="applyFilter('Core')">Core</button>
+        <button (click)="applyFilter('Available')">Available</button>
+        <button (click)="applyFilter('Acc')">Accounts</button>
+        <button (click)="applyFilter('Tax')">Tax</button>
+        <button (click)="applyFilter('Inst')">Installations</button>
+    </div>
+    <div class="card">
+        <p class="count">Number of currently available Support Team Agents: {{allAvailableAgents?.count}}</p>
+    </div>
+    <div>
+        <table>
+            <thead>
+            <th (click)="orderByField = 'id'">Agent ID</th>
+            <th (click)="orderByField = 'name'">Agent Name</th>
+            <th (click)="orderByField = 'agentTeam'">Agent Team</th>
+            <th (click)="orderByField = 'available'">Avail/RFO</th>
+            <th>Last State</th>
+            <th>Time in Last State</th>
+            <th>State Changed At</th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let agent of visibleAgents | orderBy:orderByField">
+                <td>{{agent?.id}}</td>
+                <td>{{agent?.name}}</td>
+                <td>{{agent?.agentTeam}}</td>
+                <td>{{agent?.available}}</td>
+                <td>{{agent?.state}}</td>
+                <td>{{agent?.duration}}</td>
+                <td>{{agent?.stateChangedAt | date :'HH:mm:ss'}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<app-sidebar class="col-12 col-md-4" [content]="pageContent.sidebar"></app-sidebar>

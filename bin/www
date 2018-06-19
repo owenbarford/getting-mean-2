@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('getting-mean-2:server');
+var debug = require('debug')('SupportApp:server');
 var http = require('http');
 
 /**

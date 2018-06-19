@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Agent } from '../agent';
+import { IAgent } from '../_models/agent';
 
 @Component({
   selector: 'app-agent-details',
@@ -9,7 +9,7 @@ import { Agent } from '../agent';
 })
 export class AgentDetailsComponent implements OnInit {
 
-  @Input() agent: Agent;
+  @Input() agent: IAgent;
 
   constructor() { }
 

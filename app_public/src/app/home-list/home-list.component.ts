@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SupportAppDataService } from '../support-app-data.service';
-import { Agent } from '../agent';
+import { SupportAppDataService } from '../_services/support-app-data.service';
+import { IAgent } from '../_models/agent';
 
 @Component({
   selector: 'app-home-list',
@@ -12,7 +12,7 @@ export class HomeListComponent implements OnInit {
 
   constructor(private supportAppDataService: SupportAppDataService) { }
 
-  agents: Agent[];
+  agents: IAgent[];
 
   private getAgents(): void {
     this.supportAppDataService
@@ -23,6 +23,7 @@ export class HomeListComponent implements OnInit {
   }
 
   ngOnInit() {
+      console.log(localStorage.getItem('currentUser'));
       this.getAgents();
   }
 

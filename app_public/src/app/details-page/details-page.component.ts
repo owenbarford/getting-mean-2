@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { SupportAppDataService } from '../support-app-data.service';
+import { SupportAppDataService } from '../_services/index';
 
 import 'rxjs/add/operator/switchMap';
 
-import { Agent } from '../agent';
+import { IAgent } from '../_models/agent';
 
 @Component({
   selector: 'app-details-page',
   templateUrl: './details-page.component.html',
-  styleUrls: ['./details-page.component.css'],
-  providers: [SupportAppDataService]
+  styleUrls: ['./details-page.component.css']
 })
 export class DetailsPageComponent implements OnInit {
   pageContent = {
@@ -27,7 +26,7 @@ export class DetailsPageComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  newAgent: Agent;
+  newAgent: IAgent;
 
   ngOnInit(): void {
     this.route.paramMap
@@ -35,7 +34,7 @@ export class DetailsPageComponent implements OnInit {
         const id = params.get('agentId');
         return this.supportAppDataService.getAgentById(id);
       })
-      .subscribe((newAgent: Agent) => {
+      .subscribe((newAgent: IAgent) => {
         this.newAgent = newAgent;
         this.pageContent.header.title = newAgent.name;
         this.pageContent.sidebar = `${newAgent.name} is listed in SupportApp because they are a consultant working for the Support Team.`;
