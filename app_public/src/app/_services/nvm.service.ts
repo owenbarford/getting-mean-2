@@ -70,7 +70,8 @@ export class NvmService {
     }
 
     getState(): Observable<any> {
-        const url = `${appConfig.nvmDataUrl}/${appConfig.clientId}/statistics/agentstates?latest=true`;
+        // const url = `${appConfig.nvmDataUrl}/${appConfig.clientId}/statistics/agentstates?latest=true`;
+        const url = `${appConfig.nvmDataUrl}/${appConfig.clientId}/statistics/agentstates?interval=600`;
         let headers = new HttpHeaders();
         headers = headers.set('Accept', 'application/json; version=2');
         return Observable.from(this.http.get<IAgentStates>(url, { headers: headers }));

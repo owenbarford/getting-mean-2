@@ -58,6 +58,13 @@ export class AuthenticationService {
         return !!localStorage.getItem('currentUser');
     }
 
+    getUser() {
+        if (localStorage.getItem('currentUser')) {
+            const user = localStorage.getItem('currentUser');
+            return user;
+        }
+    }
+
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');

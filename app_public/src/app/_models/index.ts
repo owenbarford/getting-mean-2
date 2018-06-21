@@ -4,3 +4,4 @@ export * from './nvmToken';
 export * from './availAgents';
 export * from './listAgents';
 export * from './agentStates';
+export * from './policies';

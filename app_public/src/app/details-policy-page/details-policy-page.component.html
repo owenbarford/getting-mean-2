@@ -1,0 +1,7 @@
+<app-page-header [content]="pageContent.header"></app-page-header>
+<div class="row">
+  <div class="col-12 col-md-8">
+    <app-policy-details *ngIf="newPolicy" [policy]="newPolicy">Loading...</app-policy-details>
+  </div>
+  <app-sidebar class="col-12 col-md-4" [content]="pageContent.sidebar"></app-sidebar>
+</div>

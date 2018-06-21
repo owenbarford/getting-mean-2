@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
-import { IAgent } from '../_models/agent';
+import { IAgent, IPolicy } from '../_models/index';
 import { appConfig } from '../app.config';
 
 @Injectable()
@@ -25,6 +25,33 @@ export class SupportAppDataService {
       .get(url)
       .toPromise()
       .then(response => response.json() as IAgent)
+      .catch(this.handleError);
+  }
+
+  public getPolicies(): Promise<IPolicy[]> {
+    const url = `${appConfig.apiUrl}/policies`;
+    return this.http
+     .get(url)
+     .toPromise()
+    .then(response => response.json() as IPolicy[])
+    .catch(this.handleError);
+  }
+
+  public getPolicyById(_id: string): Promise<IPolicy> {
+    const url = `${appConfig.apiUrl}/policies/${_id}`;
+    return this.http
+      .get(url)
+      .toPromise()
+      .then(response => response.json() as IPolicy)
+      .catch(this.handleError);
+  }
+
+  public addNewPolicy(formData: any): Promise<any> {
+    const url = `${appConfig.apiUrl}/policies`;
+    return this.http
+      .post(url, formData)
+      .toPromise()
+      .then(response => response.json() as any)
       .catch(this.handleError);
   }
 

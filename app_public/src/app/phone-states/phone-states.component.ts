@@ -28,7 +28,12 @@ export class PhoneStatesComponent implements OnInit {
 
     applyFilter(filter) {
         this.visibleAgentStates = this.filterAgentStateService.filterAgentStates(filter, this.allAgentStates);
-     }
+    }
+
+    applyInterval(filter) {
+        console.log(filter);
+        this.visibleAgentStates = this.filterAgentStateService.filterAgentStateInfo(filter, this.allAgentStates);
+    }
 
     constructor(
         private route: ActivatedRoute,

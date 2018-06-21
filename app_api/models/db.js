@@ -57,4 +57,5 @@ const gracefulShutdown = (msg, callback) => {
 require('./agents');
 require('./listagents');
 require('./users');
+require('./policies');
 

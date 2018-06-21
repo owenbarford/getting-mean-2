@@ -35,6 +35,10 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { PhoneComponent } from './phone/index';
 import { PhoneStatesComponent } from './phone-states/index';
+import { PoliciesComponent } from './policies/index';
+import { DetailsPolicyPageComponent } from './details-policy-page/details-policy-page.component';
+import { PolicyDetailsComponent } from './policy-details/policy-details.component';
+import { PolicyAddComponent } from './policy-add/policy-add.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +57,10 @@ import { PhoneStatesComponent } from './phone-states/index';
     RegisterComponent,
     PhoneComponent,
     PhoneStatesComponent,
+    PoliciesComponent,
+    DetailsPolicyPageComponent,
+    PolicyDetailsComponent,
+    PolicyAddComponent,
     LoadingSpinnerComponent,
     OrderByPipe
   ],

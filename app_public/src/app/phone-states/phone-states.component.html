@@ -3,6 +3,12 @@
     <div class="card">
         <p class="count">List of Agents States</p>
     </div>
+    <div class="statsInterval">
+        <button (click)="applyInterval('Latest')">Latest</button>
+        <button (click)="applyInterval('120')">Last 2 hrs</button>
+        <button (click)="applyInterval('240')">Last 4 hrs</button>
+        <button (click)="applyInterval('480')">Last 8 hrs</button>
+    </div>
     <div>
         <select #selectElem (change)="applyFilter(selectElem.value)">
             <option *ngFor="let agent of listAgents" [value]="agent.id">
@@ -12,10 +18,10 @@
         <table>
             <thead>
                 <th (click)="orderByField = 'agentId'">Agent ID</th>
-                <th  (click)="orderByField = 'name'">Agent Name</th>
-                <th>Last State</th>
+                <th (click)="orderByField = 'name'">Agent Name</th>
+                <th (click)="orderByField = 'state'">Last State</th>
                 <th>Time in Last State</th>
-                <th>State Changed At</th>
+                <th (click)="orderByField = 'stateChangedAt'">State Changed At</th>
             </thead>
             <tbody>
             <tr *ngFor="let state of visibleAgentStates | orderBy:orderByField">

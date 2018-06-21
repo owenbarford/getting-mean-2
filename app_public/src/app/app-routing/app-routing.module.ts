@@ -11,6 +11,9 @@ import { RegisterComponent } from '../register/index';
 import { AuthGuard } from '../_guards/index';
 import { PhoneComponent } from '../phone/index';
 import { PhoneStatesComponent } from '..//phone-states/index';
+import { PoliciesComponent } from '..//policies/index';
+import { DetailsPolicyPageComponent } from '../details-policy-page/details-policy-page.component';
+import { PolicyAddComponent } from '../policy-add/policy-add.component';
 
 const routes: Routes = [{
     path: '',
@@ -44,6 +47,21 @@ const routes: Routes = [{
   {
     path: 'phonestates',
     component: PhoneStatesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'policies',
+    component: PoliciesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'policies/:_id',
+    component: DetailsPolicyPageComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'newpolicy',
+    component: PolicyAddComponent,
     canActivate: [AuthGuard]
   },
   {

@@ -1,0 +1,32 @@
+<app-page-header [content]="pageContent.header"></app-page-header>
+<h2 class="card-title">Policies</h2>
+<div>
+  <form (ngSubmit)="onPolicySubmit()">
+    <hr>
+    <h4>Add your policy</h4>
+    <div *ngIf="formError" class="alert alert-danger" role="alert">   
+        {{ formError }} 
+    </div>
+    <div class="form-group row">
+      <label for="title" class="col-sm-2 col-form-label">Policy Title</label>
+      <div class="col-sm-10">
+        <input [(ngModel)]="newPolicy.title" id="title" name="title" required="required" class="form-control">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="policy" class="col-sm-2 col-form-label">Policy Content</label>
+      <div class="col-sm-10">
+        <textarea [(ngModel)]="newPolicy.policyText" name="policy" id="policy" rows="20" class="form-control"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary float-right" style="margin-left:15px">Submit policy
+        </button>
+        <button type="button" class="btn btn-default float-right" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+    <hr> 
+  </form>
+</div>
+<app-sidebar class="col-12 col-md-4" [content]="pageContent.sidebar"></app-sidebar>

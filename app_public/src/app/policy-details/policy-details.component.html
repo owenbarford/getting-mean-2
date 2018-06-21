@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-12">     
+    <div class="card card-primary review-card">       
+      <div class="card-block"><a routerLink="/newpolicy" class="btn btn-primary float-right">Add policy</a>
+        <h2 class="card-title">{{ policy.title }}</h2>
+          <div class="col-12 no-gutters review-header">
+            <span class="policyAuthor">{{ policy.createdBy }} on </span>
+            <small class="policyTimestamp">{{ policy.createdOn | date : 'd MMMM yyyy' }}</small>
+          </div>           
+          <div class="col-12">             
+            <p [innerHTML]="policy.policyText | htmlLineBreaks"></p>
+          </div>
+      </div>
+   </div>
+  </div>
+</div>
+

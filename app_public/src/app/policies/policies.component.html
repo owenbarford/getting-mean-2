@@ -1,0 +1,16 @@
+<app-page-header [content]="pageContent.header"></app-page-header>
+<div class="col-12 col-md-8">
+    <div class="card"><a routerLink="/newpolicy" class="btn btn-primary float-right">Add policy</a>
+    <div class="card" *ngFor="let policy of policies">
+        <div class="card-block">
+            <h4>
+                <a routerLink="/policies/{{policy._id}}">{{ policy.title }}</a>
+                <small>&nbsp;</small>
+            </h4>
+            <p class="createdBy">Created By: {{ policy.createdBy }}</p>
+            <p class="createdOn">Created On: {{ policy.createdOn | date : 'd MMMM yyyy' }}</p>
+            <p class="policyText" [innerHTML]="policy.policyText | htmlLineBreaks"></p>            
+        </div>
+    </div>
+</div>
+<app-sidebar class="col-12 col-md-4" [content]="pageContent.sidebar"></app-sidebar>
