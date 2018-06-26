@@ -42,15 +42,14 @@ export class PolicyAddComponent implements OnInit {
     public onPolicySubmit(): void {
         this.formError = '';
         if (this.formIsValid()) {
-            console.log(this.newPolicy);
-            const user = JSON.parse(this.authenticationService.getUser());
+            const user = this.authenticationService.getUser();
             const userName = user['firstName'] + ' ' + user['lastName'];
             this.newPolicy.createdBy = userName;
-            console.log(this.newPolicy);
             this.supportAppDataService.addNewPolicy(this.newPolicy)
             .then(policy => {
                 console.log('Policy saved', policy);
             });
+            this.router.navigate(['/policies']);
         } else {
             this.formError = 'All fields required, please try again';
         }

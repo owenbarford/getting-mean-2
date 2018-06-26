@@ -10,6 +10,8 @@ export class SupportAppDataService {
 
   constructor(private http: Http) { }
 
+  policy: IPolicy;
+
   public getAgents(): Promise<IAgent[]> {
     const url = `${appConfig.apiUrl}/agents`;
     return this.http
@@ -50,6 +52,24 @@ export class SupportAppDataService {
     const url = `${appConfig.apiUrl}/policies`;
     return this.http
       .post(url, formData)
+      .toPromise()
+      .then(response => response.json() as any)
+      .catch(this.handleError);
+  }
+
+  public updatePolicy(data): Promise<any> {
+    const url = `${appConfig.apiUrl}/policies/${data._id}`;
+    return this.http
+      .put(url, data)
+      .toPromise()
+      .then(response => response.json() as any)
+      .catch(this.handleError);
+  }
+
+  public deletePolicy(_id: string): Promise<any> {
+    const url = `${appConfig.apiUrl}/policies/${_id}`;
+    return this.http
+      .delete(url, _id)
       .toPromise()
       .then(response => response.json() as any)
       .catch(this.handleError);

@@ -14,6 +14,7 @@ import { PhoneStatesComponent } from '..//phone-states/index';
 import { PoliciesComponent } from '..//policies/index';
 import { DetailsPolicyPageComponent } from '../details-policy-page/details-policy-page.component';
 import { PolicyAddComponent } from '../policy-add/policy-add.component';
+import { PolicyEditComponent } from '../policy-edit/policy-edit.component';
 
 const routes: Routes = [{
     path: '',
@@ -62,6 +63,11 @@ const routes: Routes = [{
   {
     path: 'newpolicy',
     component: PolicyAddComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'editpolicy/:_id',
+    component: PolicyEditComponent,
     canActivate: [AuthGuard]
   },
   {

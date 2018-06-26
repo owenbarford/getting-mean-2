@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
-
 import { HomeListComponent } from './home-list/home-list.component';
 import { FrameworkComponent } from './framework/framework.component';
 import { AboutComponent } from './about/about.component';
@@ -17,20 +16,11 @@ import { AgentDetailsComponent } from './agent-details/agent-details.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
 // import { LoginComponent } from './login-page/login-page.component';
 import { ProfileComponent } from './profile/profile.component';
-
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptorProvider, ErrorInterceptorProvider, LoadingSpinnerComponent, OrderByPipe } from './_helpers/index';
-import {
-  AlertService,
-  AuthenticationService,
-  UserService,
-  SupportAppAuthService,
-  SupportAppDataService,
-  NvmService,
-  FilterAgentsService,
-  FilterAgentStateService
-} from './_services/index';
+// tslint:disable-next-line:max-line-length
+import { AlertService, AuthenticationService, UserService, SupportAppAuthService, SupportAppDataService, NvmService, FilterAgentsService, FilterAgentStateService} from './_services/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { PhoneComponent } from './phone/index';
@@ -39,6 +29,7 @@ import { PoliciesComponent } from './policies/index';
 import { DetailsPolicyPageComponent } from './details-policy-page/details-policy-page.component';
 import { PolicyDetailsComponent } from './policy-details/policy-details.component';
 import { PolicyAddComponent } from './policy-add/policy-add.component';
+import { PolicyEditComponent } from './policy-edit/policy-edit.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +52,7 @@ import { PolicyAddComponent } from './policy-add/policy-add.component';
     DetailsPolicyPageComponent,
     PolicyDetailsComponent,
     PolicyAddComponent,
+    PolicyEditComponent,
     LoadingSpinnerComponent,
     OrderByPipe
   ],

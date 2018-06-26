@@ -60,7 +60,7 @@ export class AuthenticationService {
 
     getUser() {
         if (localStorage.getItem('currentUser')) {
-            const user = localStorage.getItem('currentUser');
+            const user = JSON.parse(localStorage.getItem('currentUser'));
             return user;
         }
     }
