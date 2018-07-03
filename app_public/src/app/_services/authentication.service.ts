@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
-import { appConfig } from '../app.config';
+// import { appConfig } from '../app.config';
 import { INvmToken  } from '../_models/index';
 import { NvmService } from '../_services/nvm.service';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
@@ -41,7 +41,8 @@ export class AuthenticationService {
 
         this.getToken();
 
-        return this.http.post<any>(appConfig.apiUrl + '/users/authenticate', { userName: userName, password: password })
+        // environment.env.API_URL replaces appConfig.apiUrl
+        return this.http.post<any>(environment.API_URL + '/users/authenticate', { userName: userName, password: password })
             .map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {

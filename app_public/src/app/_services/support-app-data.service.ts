@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { IAgent, IPolicy } from '../_models/index';
-import { appConfig } from '../app.config';
+// import { appConfig } from '../app.config';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SupportAppDataService {
@@ -13,7 +14,8 @@ export class SupportAppDataService {
   policy: IPolicy;
 
   public getAgents(): Promise<IAgent[]> {
-    const url = `${appConfig.apiUrl}/agents`;
+    // environment.API_URL replaces appConfig.apiUrl
+    const url = `${environment.API_URL}/agents`;
     return this.http
      .get(url)
      .toPromise()
@@ -22,7 +24,8 @@ export class SupportAppDataService {
   }
 
   public getAgentById(agentId: string): Promise<IAgent> {
-    const url = `${appConfig.apiUrl}/agents/${agentId}`;
+    // environment.API_URL replaces appConfig.apiUrl
+    const url = `${environment.API_URL}/agents/${agentId}`;
     return this.http
       .get(url)
       .toPromise()
@@ -31,7 +34,8 @@ export class SupportAppDataService {
   }
 
   public getPolicies(): Promise<IPolicy[]> {
-    const url = `${appConfig.apiUrl}/policies`;
+    // environment.API_URL replaces appConfig.apiUrl
+    const url = `${environment.API_URL}/policies`;
     return this.http
      .get(url)
      .toPromise()
@@ -40,7 +44,8 @@ export class SupportAppDataService {
   }
 
   public getPolicyById(_id: string): Promise<IPolicy> {
-    const url = `${appConfig.apiUrl}/policies/${_id}`;
+    // environment.API_URL replaces appConfig.apiUrl
+    const url = `${environment.API_URL}/policies/${_id}`;
     return this.http
       .get(url)
       .toPromise()
@@ -49,7 +54,8 @@ export class SupportAppDataService {
   }
 
   public addNewPolicy(formData: any): Promise<any> {
-    const url = `${appConfig.apiUrl}/policies`;
+    // process.env.API_URL replaces appConfig.apiUrl
+    const url = `${environment.API_URL}/policies`;
     return this.http
       .post(url, formData)
       .toPromise()
@@ -58,7 +64,8 @@ export class SupportAppDataService {
   }
 
   public updatePolicy(data): Promise<any> {
-    const url = `${appConfig.apiUrl}/policies/${data._id}`;
+    // environment.API_URL replaces appConfig.apiUrl
+    const url = `${environment.API_URL}/policies/${data._id}`;
     return this.http
       .put(url, data)
       .toPromise()
@@ -67,7 +74,8 @@ export class SupportAppDataService {
   }
 
   public deletePolicy(_id: string): Promise<any> {
-    const url = `${appConfig.apiUrl}/policies/${_id}`;
+    // process.env.API_URL replaces appConfig.apiUrl
+    const url = `${environment.API_URL}/policies/${_id}`;
     return this.http
       .delete(url, _id)
       .toPromise()

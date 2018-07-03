@@ -1,4 +1,4 @@
-import { Injectable, state } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { catchError, retry } from 'rxjs/operators';
@@ -15,8 +15,9 @@ import 'rxjs/add/operator/concatMap';
 import 'rxjs/add/operator/takeLast';
 import 'rxjs/add/operator/toArray';
 
-import { appConfig } from '../app.config';
+// import { appConfig } from '../app.config';
 import { INvmToken, IAvailAgents, IListAgents, IAgentStates } from '../_models/index';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -26,7 +27,8 @@ export class NvmService {
     ) { }
 
     public getNvmToken() {
-        return this.http.get<INvmToken>(appConfig.nvmApiUrl + '/nvm')
+        // enviroment.NVM_API_URL replaces appConfig.nvmApiUrl
+        return this.http.get<INvmToken>(environment.NVM_API_URL + '/nvm')
             .pipe(
                 retry(3),
                 catchError(this.handleError)
@@ -34,7 +36,9 @@ export class NvmService {
     }
 
     public getAvailAgents() {
-        const url = `${appConfig.nvmDataUrl}/${appConfig.clientId}/agents/?availability=readyForPhoneCall`;
+        // environment.NVM_DATA_URL replaces appConfig.nvmDataUrl
+        // environment.NVM_CLIENT_ID replaces appConfig.clientId
+        const url = `${environment.NVM_DATA_URL}/${environment.NVM_CLIENT_ID}/agents/?availability=readyForPhoneCall`;
         return this.http.get<IAvailAgents>(url)
             .pipe(
                 catchError(this.handleError)
@@ -42,7 +46,9 @@ export class NvmService {
     }
 
     public getAgentStates() {
-        const url = `${appConfig.nvmDataUrl}/${appConfig.clientId}/statistics/agentstates?interval=360`;
+        // environment.env.NVM_DATA_URL replaces appConfig.nvmDataUrl
+        // environment.NVM_CLIENT_ID replaces appConfig.clientId
+        const url = `${environment.NVM_DATA_URL}/${environment.NVM_CLIENT_ID}/statistics/agentstates?interval=360`;
         let headers = new HttpHeaders();
         headers = headers.set('Accept', 'application/json; version=2');
         return this.http.get<IAgentStates>(url, { headers: headers })
@@ -52,7 +58,8 @@ export class NvmService {
     }
 
     public getListAgents() {
-        const url = `${appConfig.apiUrl}/listagents`;
+        // environment.API_URL replaces appConfig.apiUrl
+        const url = `${environment.API_URL}/listagents`;
         return this.http.get<IListAgents[]>(url)
             .pipe(
                 catchError(this.handleError)
@@ -60,18 +67,23 @@ export class NvmService {
     }
 
     getList(): Observable<any> {
-        const url = `${appConfig.apiUrl}/listagents`;
+        // environment.API_URL replaces appConfig.apiUrl
+        const url = `${environment.API_URL}/listagents`;
         return Observable.from(this.http.get<IListAgents[]>(url));
     }
 
     getAvail(): Observable<any> {
-        const url = `${appConfig.nvmDataUrl}/${appConfig.clientId}/agents/?availability=readyForPhoneCall`;
+        // environment.NVM_DATA_URL replaces appConfig.nvmDataUrl
+        // environment.NVM_CLIENT_ID replaces appConfig.clientId
+        const url = `${environment.NVM_DATA_URL}/${environment.NVM_CLIENT_ID}/agents/?availability=readyForPhoneCall`;
         return Observable.from(this.http.get<IAvailAgents>(url));
     }
 
     getState(): Observable<any> {
+        // environment.NVM_DATA_URL replaces appConfig.nvmDataUrl
+        // environment.NVM_CLIENT_ID replaces appConfig.clientId
         // const url = `${appConfig.nvmDataUrl}/${appConfig.clientId}/statistics/agentstates?latest=true`;
-        const url = `${appConfig.nvmDataUrl}/${appConfig.clientId}/statistics/agentstates?interval=600`;
+        const url = `${environment.NVM_DATA_URL}/${environment.NVM_CLIENT_ID}/statistics/agentstates?interval=600`;
         let headers = new HttpHeaders();
         headers = headers.set('Accept', 'application/json; version=2');
         return Observable.from(this.http.get<IAgentStates>(url, { headers: headers }));

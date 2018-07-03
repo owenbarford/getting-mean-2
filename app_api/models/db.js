@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-var config = require('../config.json');
-let dbURI = config.connectionString;
+// var config = require('../config.json');
+// let dbURI = config.connectionString;
+
 if (process.env.NODE_ENV === 'production'){
   dbURI = process.env.MONGODB_URI;
 }

@@ -17,7 +17,6 @@ export class DetailsPageComponent implements OnInit {
       title : '',
       strapline : ''
     },
-    // tslint:disable-next-line:max-line-length
     sidebar : ''
   };
 

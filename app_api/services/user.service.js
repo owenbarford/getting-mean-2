@@ -1,4 +1,3 @@
-var config = require('../config.json');
 var express = require('express');
 var _ = require('lodash');
 var jwt = require('jsonwebtoken');
@@ -27,7 +26,8 @@ function authenticate(userName, password) {
         if (user && bcrypt.compareSync(password, user.hash)) {
             foundUser = user;
             // foundUser.token = jwt.sign({ sub: user._id }, config.secret)
-            foundUser.token = jwt.sign({sub: config.clientId}, config.secret)
+            // foundUser.token = jwt.sign({sub: config.clientId}, config.secret)
+            foundUser.token = jwt.sign({sub: process.env.NVM_CLIENT_ID}, process.env.NVM_API_TOKEN)
             console.log(foundUser.token);
             return user = foundUser;  
         }   

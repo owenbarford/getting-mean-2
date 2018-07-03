@@ -1,8 +1,0 @@
-{
-    "connectionString": "mongodb://testUser:Afpftcb1td@DESKTOP-9RIRJPH/SupportApp",
-    "apiUrl": "http://localhost:4200",
-    "secret": "9O7KIvlb/1TgkyBs6MM6MMfVOzAjg52zSdhZvwq7xxQ=",
-    "clientId": "wwxcdqiapdx",
-    "base64": "d3d4Y2RxaWFwZHg6OU83S0l2bGIvMVRna3lCczZNTTZNTWZWT3pBamc1MnpTZGhadndxN3h4UT0=",
-    "NVMOAuth2Url": "https://cloud11.contact-world.net/v0/oauth2/token"
-}

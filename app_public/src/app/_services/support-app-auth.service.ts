@@ -1,11 +1,13 @@
+// I don't think we use this service anywhere in the app.
+
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Http } from '@angular/http';
+import * as moment from 'moment';
 import 'rxjs/add/operator/toPromise';
 
 import { IUser } from '../_models/user';
-import { appConfig } from '../app.config';
-
-import * as moment from 'moment';
+// import { appConfig } from '../app.config';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SupportAppAuthService {
@@ -13,14 +15,14 @@ export class SupportAppAuthService {
     public currentUser: IUser;
     constructor(private http: Http) {
 
-        this.currentUser = {
+    this.currentUser = {
             _id: 1234,
-            userName: 'Owen Barford',
-            firstName: 'Owen',
-            lastName: 'Barford',
+            userName: 'FredSmith',
+            firstName: 'Fred',
+            lastName: 'Smith',
             hash: '1234',
             password: '12',
-            email: 'owen.barford@wolterskluwer.com'
+            email: 'fred.smith@hotmail.com'
         };
     }
 
@@ -37,7 +39,8 @@ export class SupportAppAuthService {
     }
 
     public getUsers(): Promise<IUser[]> {
-        const url = appConfig.apiUrl + '/User';
+        // environment.API_URL replaces appConfig.apiUrl
+        const url = environment.API_URL + '/User';
         return this.http
             .get(url)
             .toPromise()
@@ -46,7 +49,8 @@ export class SupportAppAuthService {
     }
 
     public getUserById(userId: string): Promise<IUser> {
-        const url = `${appConfig.apiUrl}/User/${userId}`;
+        // environment.API_URL replaces appConfig.apiUrl
+        const url = `${environment.API_URL}/User/${userId}`;
         return this.http
             .get(url)
             .toPromise()
@@ -60,7 +64,8 @@ export class SupportAppAuthService {
     }
 
     public login(formValues): void {
-        const url = `${appConfig.apiUrl}/Login`;
+        // environment.API_URL replaces appConfig.apiUrl
+        const url = `${environment.API_URL}/Login`;
     }
 
     private setSession(authResult) {

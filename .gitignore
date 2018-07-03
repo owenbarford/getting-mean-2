@@ -34,3 +34,6 @@ npm-debug.log
 
 # any temp files
 /temp
+
+# any environment files
+/app_public/src/environments
