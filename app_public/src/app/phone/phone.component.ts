@@ -18,6 +18,7 @@ export class PhoneComponent implements OnInit {
     allAgentStates: any;
     allAgentData: any[];
     visibleAgents: any[];
+    orderByField: any;
 
     pageContent = {
         header: {
@@ -31,12 +32,12 @@ export class PhoneComponent implements OnInit {
         private route: ActivatedRoute,
         private nvmService: NvmService,
         private authenticationService: AuthenticationService,
-        private filterAgentsService: FilterAgentsService
+        public filterAgentsService: FilterAgentsService
     ) { }
 
     applyFilter(filter) {
         this.visibleAgents = this.filterAgentsService.filterAgents(filter, this.allAgentData);
-      }
+    }
 
     ngOnInit(): void {
         // get return url from route parameters or default to '/'

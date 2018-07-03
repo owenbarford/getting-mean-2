@@ -17,6 +17,7 @@ export class PhoneStatesComponent implements OnInit {
     allAgentStates: any;
     listAgents: any;
     visibleAgentStates: any[];
+    orderByField: any;
 
     pageContent = {
         header: {
@@ -39,7 +40,7 @@ export class PhoneStatesComponent implements OnInit {
         private route: ActivatedRoute,
         private nvmService: NvmService,
         private authenticationService: AuthenticationService,
-        private filterAgentStateService: FilterAgentStateService
+        public filterAgentStateService: FilterAgentStateService
     ) {}
 
     ngOnInit () {

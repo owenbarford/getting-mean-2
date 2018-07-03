@@ -14,13 +14,12 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { HtmlLineBreaksPipe } from './_helpers/html-line-breaks.pipe';
 import { AgentDetailsComponent } from './agent-details/agent-details.component';
 import { DetailsPageComponent } from './details-page/details-page.component';
-// import { LoginComponent } from './login-page/login-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptorProvider, ErrorInterceptorProvider, LoadingSpinnerComponent, OrderByPipe } from './_helpers/index';
 // tslint:disable-next-line:max-line-length
-import { AlertService, AuthenticationService, UserService, SupportAppAuthService, SupportAppDataService, NvmService, FilterAgentsService, FilterAgentStateService} from './_services/index';
+import { AlertService, AuthenticationService, UserService, SupportAppDataService, NvmService, FilterAgentsService, FilterAgentStateService} from './_services/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { PhoneComponent } from './phone/index';
@@ -73,7 +72,6 @@ import { PolicyEditComponent } from './policy-edit/policy-edit.component';
     UserService,
     JwtInterceptorProvider,
     ErrorInterceptorProvider,
-    SupportAppAuthService,
     SupportAppDataService,
     FilterAgentsService,
     FilterAgentStateService

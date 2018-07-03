@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, AfterViewChecked } from '@angular/core';
 import { AlertService, AuthenticationService } from '../_services/index';
 
 @Component({
@@ -10,8 +10,8 @@ import { AlertService, AuthenticationService } from '../_services/index';
 export class FrameworkComponent implements OnInit, AfterViewChecked {
 
   constructor(
-    private alertService: AlertService,
-    private authService: AuthenticationService,
+    public alertService: AlertService,
+    public authService: AuthenticationService,
     private cdRef: ChangeDetectorRef
    ) {
   }
@@ -22,4 +22,5 @@ export class FrameworkComponent implements OnInit, AfterViewChecked {
   ngAfterViewChecked() {
     this.cdRef.detectChanges();
   }
+
 }

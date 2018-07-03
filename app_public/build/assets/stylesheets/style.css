@@ -1,22 +1,22 @@
-@import url("//fonts.googleapis.com/css?family=Lobster|Cabin:400,700");
+@import url("//fonts.googleapis.com/css?family=Roboto|Cabin:400,700");
 
 body {
-  font-family: "Cabin", Arial, sans-serif;
+  font-family: 'Roboto';
   color: #ffffff;
-  background-color: #108a93;
+  background-color: #000000;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Lobster', cursive;
+  font-family: 'Roboto', cursive;
 }
 
 .navbar {
-  background-color: #ad1d28;
-  border-color: #911821;
+  background-color: #3b2428;
+  border-color: #3b2428;
 }
 
 .navbar-brand {
-  font-family: 'Lobster', cursive;
+  font-family: 'Roboto', cursive;
 }
 
 .banner {
@@ -31,7 +31,7 @@ h1 small {
 }
 
 .card {
-  background-color: #469ea8;
+  background-color: #000000;
 }
 
 .card-primary {
@@ -40,7 +40,7 @@ h1 small {
 }
 
 .review-header {
-  background-color: #31727a;
+  background-color: #3b2428;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   margin-bottom: 0.5em;
@@ -81,5 +81,5 @@ h4 small {
 }
 
 legend {
-  font-family: 'Lobster', cursive;
+  font-family: 'Roboto', cursive;
 }
