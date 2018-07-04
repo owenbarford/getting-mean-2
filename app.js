@@ -59,7 +59,6 @@ app.use(express.static(path.join(__dirname, 'app_public', 'build')));
 app.use('/api', apiRoutes);
 
 app.use('/api/users', require('./app_api/controllers/users.controller'))
-//app.use('/api/getNvmToken', require('./app_api/controllers/nvm.controller'));
 
 app.get(/(\/about)|(\/agent\/[a-z0-9]{24})|(\/listagents\/[a-z0-9]{24})/, function(req, res, next) {
    res.sendFile(path.join(__dirname, 'app_public', 'build', 'index.html'));
