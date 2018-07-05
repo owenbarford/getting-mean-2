@@ -30,7 +30,7 @@ export class NvmService {
         // enviroment.NVM_API_URL replaces appConfig.nvmApiUrl
         return this.http.get<INvmToken>(environment.NVM_API_URL + '/nvm')
             .pipe(
-                retry(3),
+                // retry(3),
                 catchError(this.handleError)
             );
     }
@@ -133,7 +133,7 @@ export class NvmService {
     }
 
     public isTokenExpired() {
-        const tokenExpiresAt = new Date(localStorage.getItem('tokenExpiry').replace('Z', '').substring(1, 20));
+        const tokenExpiresAt = new Date(localStorage.getItem('tokenExpiry')); // .replace('Z', '').substring(1, 20));
         const today = new Date();
 
         if (tokenExpiresAt) {
