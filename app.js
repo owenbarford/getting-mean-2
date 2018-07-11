@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'app_public', 'build')));
 //       }
 //       return null;
 //   }
-// }).unless({ path: ['/api/users/authenticate', '/api/users/register', '/api/agents', '/api/agent', '/api/agents/'] }));
+// }).unless({ path: ['/api/users/authenticate', '/api/users/register'] }));
 
 // allow access control allow origin from http://localhost:4200 so http://localhost:3000:/api can be acccesed from Angular frontend.
 // not needed if also using app.use(cors());

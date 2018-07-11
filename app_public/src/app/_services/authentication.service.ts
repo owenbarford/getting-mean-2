@@ -50,11 +50,16 @@ export class AuthenticationService {
                     // now get the NVM token and add to user.token
                     this.nvmService.getNvmToken()
                         .subscribe((data: INvmToken) => {
-                            this.token = data;
-                            user.token = this.token['access_token'];
-                            localStorage.setItem('currentUser', JSON.stringify(user));
-                            localStorage.setItem('tokenExpiry', JSON.stringify(this.token['expires_at']));
-                            return user;
+                            if (data) {
+                                this.token = data;
+                                user.token = this.token['access_token'];
+                                localStorage.setItem('currentUser', JSON.stringify(user));
+                                localStorage.setItem('tokenExpiry', JSON.stringify(this.token['expires_at']));
+                                return user;
+                            } else {
+                                // NVMAPI has not returned a token for us to use.
+                                console.log('no response from NVMAPI');
+                            }
                         });
                 }
             return user;

@@ -46,16 +46,10 @@ export class LoginComponent implements OnInit {
                     this.user = user;
                     return this.user;
                 })
-                .subscribe(result => {
-                    this.result = result;
-                    // it takes a couple of seconds to get the token into local storage!
+                .subscribe(() => {
+                    // it takes a couple of milliseconds to get the token into local storage!
                     // if we don't have the local storage then AuthGuard won't work
-                    if (this.result && localStorage.getItem('currentUser')) {
-                        setTimeout(() => this.router.navigate([this.returnUrl]), 2000);
-                    } else {
-                        // wait for 2 seconds if no local storage currentUser
-                        setTimeout(() => this.router.navigate([this.returnUrl]), 2000);
-                    }
+                    setTimeout(() => this.router.navigate([this.returnUrl]), 50);
                 },
                 error => {
                     this.alertService.error(error);
