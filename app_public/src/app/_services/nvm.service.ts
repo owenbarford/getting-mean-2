@@ -30,7 +30,6 @@ export class NvmService {
         // enviroment.NVM_API_URL replaces appConfig.nvmApiUrl
         return this.http.get<INvmToken>(environment.NVM_API_URL + '/nvm')
             .pipe(
-                // retry(3),
                 catchError(this.handleError)
             );
     }

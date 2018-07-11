@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { IUser } from '../_models/index';
 import { AlertService, AuthenticationService } from '../_services/index';
 
 @Component({
@@ -12,6 +13,8 @@ export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
     returnUrl: string;
+    user: IUser;
+    result: any;
 
     pageContent = {
         header: {
@@ -38,9 +41,21 @@ export class LoginComponent implements OnInit {
     login() {
         this.loading = true;
         this.authenticationService.login(this.model.userName, this.model.password)
-            .subscribe(
-                data => {
-                    this.router.navigate([this.returnUrl]);
+            .map(
+                user => {
+                    this.user = user;
+                    return this.user;
+                })
+                .subscribe(result => {
+                    this.result = result;
+                    // it takes a couple of seconds to get the token into local storage!
+                    // if we don't have the local storage then AuthGuard won't work
+                    if (this.result && localStorage.getItem('currentUser')) {
+                        setTimeout(() => this.router.navigate([this.returnUrl]), 2000);
+                    } else {
+                        // wait for 2 seconds if no local storage currentUser
+                        setTimeout(() => this.router.navigate([this.returnUrl]), 2000);
+                    }
                 },
                 error => {
                     this.alertService.error(error);

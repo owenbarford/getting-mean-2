@@ -23,7 +23,7 @@ export class HomeListComponent implements OnInit {
   }
 
   ngOnInit() {
-      console.log(localStorage.getItem('currentUser'));
+      // console.log(localStorage.getItem('currentUser'));
       this.getAgents();
   }
 

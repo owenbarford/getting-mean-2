@@ -13,6 +13,7 @@ export class AuthGuard implements CanActivate {
         }
 
         // not logged in so redirect to login page with the return url
+        console.log('no current user found in local storage!');
         this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
         return false;
     }

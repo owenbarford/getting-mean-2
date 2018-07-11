@@ -17,9 +17,12 @@ export class AuthenticationService {
             private nvmService: NvmService
     ) { }
 
+    // there is a problem with the logic here during first login! Need to cross check.
     getToken() {
+        console.log('start of token grab');
         if (this.nvmService.isTokenExpired && localStorage.getItem('currentUser')) {
             const tempToken: {} = JSON.parse(localStorage.getItem('currentUser'));
+            console.log('token expired and current user exists');
             localStorage.removeItem('currentUser');
             localStorage.removeItem('tokenExpiry');
             this.nvmService.getNvmToken()
@@ -33,6 +36,7 @@ export class AuthenticationService {
             this.nvmService.getNvmToken()
                 .subscribe((data: INvmToken) => {
                     this.token = data;
+                    console.log(data);
             });
         }
     }
@@ -43,15 +47,19 @@ export class AuthenticationService {
             .map(user => {
                 // login successful if there's a jwt token in the response
                 if (user && user.token) {
-                    this.getToken();
-                    // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    user.token = this.token['access_token'];
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                    localStorage.setItem('tokenExpiry', JSON.stringify(this.token['expires_at']));
+                    // now get the NVM token and add to user.token
+                    this.nvmService.getNvmToken()
+                        .subscribe((data: INvmToken) => {
+                            this.token = data;
+                            user.token = this.token['access_token'];
+                            localStorage.setItem('currentUser', JSON.stringify(user));
+                            localStorage.setItem('tokenExpiry', JSON.stringify(this.token['expires_at']));
+                            return user;
+                        });
                 }
-                return user;
+            return user;
             });
-    }
+        }
 
     isAuthenticated() {
         return !!localStorage.getItem('currentUser');
