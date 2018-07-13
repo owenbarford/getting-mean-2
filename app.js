@@ -14,9 +14,19 @@ const apiRoutes = require('./app_api/routes/index');
 
 const app = express();
 
+var whitelist = ['http://localhost:4200', 'https://suppappuk.com', 'http://localhost:3000']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
 app.use(logger('dev'));
-//enable all CORS requests - not advisable in production environments.
-app.use(cors());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -40,27 +50,22 @@ app.use(express.static(path.join(__dirname, 'app_public', 'build')));
 //   }
 // }).unless({ path: ['/api/users/authenticate', '/api/users/register'] }));
 
-// allow access control allow origin from http://localhost:4200 so http://localhost:3000:/api can be acccesed from Angular frontend.
-// not needed if also using app.use(cors());
-// app.use('/api', function(req, res, next) {   
-//   res.header('Access-Control-Allow-Origin', 'http://localhost:4200');   
-//   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');   
-//   next(); 
-// });
-
-// app.use(function(req, res, next) {
-//       res.Header('Access-Control-Allow-Origin', '*');
-//       res.Header('Content-Type', 'application/x-www-form-urlencoded');
-//       res.Header('Authorization', 'Basic ' + process.env.NVM_Secret_Base64);
-//     next();
-// });
+app.use('/api', function(req, res, next) {
+  var allowedOrigins = ['http://localhost:4200', '//suppappuk.com', 'https://cloud11.contact-world.net'];
+  var origin = req.headers.origin;
+  if(allowedOrigins.indexOf(origin) > -1){
+       res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 // routes
 app.use('/api', apiRoutes);
 
 app.use('/api/users', require('./app_api/controllers/users.controller'))
 
-app.get(/(\/about)|(\/agent\/[a-z0-9]{24})|(\/listagents\/[a-z0-9]{24})/, function(req, res, next) {
+app.get(/(\/login)|(\/listagents)|(\/users\/register)|(\/users\/authenticate)|(\/about)|(\/agent\/[a-z0-9]{24})|(\/listagents\/[a-z0-9]{24})|(\/profile)|(\/listagents)|(\/phone)|(\/phonestates)|(\/policies\/[a-z0-9])|(\/editpolicy\/[a-z0-9])|(\/newpolicy)/,function(req, res, next) {
    res.sendFile(path.join(__dirname, 'app_public', 'build', 'index.html'));
 }) 
 

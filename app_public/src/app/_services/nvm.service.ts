@@ -37,6 +37,7 @@ export class NvmService {
     public getAvailAgents() {
         // environment.NVM_DATA_URL replaces appConfig.nvmDataUrl
         // environment.NVM_CLIENT_ID replaces appConfig.clientId
+        // tslint:disable-next-line:max-line-length
         const url = `${environment.NVM_DATA_URL}/${environment.NVM_CLIENT_ID}/agents/?availability=readyForPhoneCall`;
         return this.http.get<IAvailAgents>(url)
             .pipe(
@@ -47,6 +48,7 @@ export class NvmService {
     public getAgentStates() {
         // environment.env.NVM_DATA_URL replaces appConfig.nvmDataUrl
         // environment.NVM_CLIENT_ID replaces appConfig.clientId
+        // tslint:disable-next-line:max-line-length
         const url = `${environment.NVM_DATA_URL}/${environment.NVM_CLIENT_ID}/statistics/agentstates?interval=360`;
         let headers = new HttpHeaders();
         headers = headers.set('Accept', 'application/json; version=2');
@@ -74,6 +76,7 @@ export class NvmService {
     getAvail(): Observable<any> {
         // environment.NVM_DATA_URL replaces appConfig.nvmDataUrl
         // environment.NVM_CLIENT_ID replaces appConfig.clientId
+        // tslint:disable-next-line:max-line-length
         const url = `${environment.NVM_DATA_URL}/${environment.NVM_CLIENT_ID}/agents/?availability=readyForPhoneCall`;
         return Observable.from(this.http.get<IAvailAgents>(url));
     }
@@ -82,6 +85,7 @@ export class NvmService {
         // environment.NVM_DATA_URL replaces appConfig.nvmDataUrl
         // environment.NVM_CLIENT_ID replaces appConfig.clientId
         // const url = `${appConfig.nvmDataUrl}/${appConfig.clientId}/statistics/agentstates?latest=true`;
+        // tslint:disable-next-line:max-line-length
         const url = `${environment.NVM_DATA_URL}/${environment.NVM_CLIENT_ID}/statistics/agentstates?interval=600`;
         let headers = new HttpHeaders();
         headers = headers.set('Accept', 'application/json; version=2');
