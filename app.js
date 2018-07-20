@@ -14,7 +14,7 @@ const apiRoutes = require('./app_api/routes/index');
 
 const app = express();
 
-var whitelist = ['http://localhost:4200', 'https://suppappuk.com', 'http://localhost:3000']
+var whitelist = ['http://localhost:4200', '//www.suppappuk.com', 'http://localhost:3000']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -26,6 +26,9 @@ var corsOptions = {
 }
 
 app.use(logger('dev'));
+
+// configure CORS
+// app.use(cors(corsOptions));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

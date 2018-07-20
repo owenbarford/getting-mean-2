@@ -14,10 +14,12 @@ export class PhoneStatesComponent implements OnInit {
 
     loading = false;
     returnUrl: string;
-    allAgentStates: any;
+    allAgentStates: any = [];
     listAgents: any;
     visibleAgentStates: any[];
     orderByField: any;
+    intervalValue = '';
+    selectAgent = '';
 
     pageContent = {
         header: {
@@ -27,13 +29,20 @@ export class PhoneStatesComponent implements OnInit {
         sidebar: 'Looking for information on the Support Team? Find consultant information here using SupportApp.'
       };
 
-    applyFilter(filter) {
+    applyFilter(filter: string) {
+        this.selectAgent = filter;
         this.visibleAgentStates = this.filterAgentStateService.filterAgentStates(filter, this.allAgentStates);
     }
 
-    applyInterval(filter) {
-        console.log(filter);
-        this.visibleAgentStates = this.filterAgentStateService.filterAgentStateInfo(filter, this.allAgentStates);
+    applyInterval(filter: string) {
+        this.intervalValue = filter;
+        if (this.selectAgent !== 'xxxx') {
+            let tempData = this.filterAgentStateService.filterAgentStates(this.selectAgent, this.allAgentStates);
+            tempData = this.filterAgentStateService.filterAgentStateInfo(this.intervalValue, tempData);
+            this.visibleAgentStates = tempData;
+        } else {
+            this.visibleAgentStates = this.filterAgentStateService.filterAgentStateInfo(filter, this.allAgentStates);
+        }
     }
 
     constructor(

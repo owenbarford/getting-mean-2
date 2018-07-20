@@ -16,7 +16,7 @@ export class PhoneComponent implements OnInit {
     allAgents: any;
     allAvailableAgents: any;
     allAgentStates: any;
-    allAgentData: any[];
+    allAgentData: any[] = [];
     visibleAgents: any[];
     orderByField: any;
 

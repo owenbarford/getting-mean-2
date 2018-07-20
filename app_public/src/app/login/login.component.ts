@@ -50,6 +50,8 @@ export class LoginComponent implements OnInit {
                     // it takes a couple of milliseconds (locally) to 2 seconds online to get the token into local storage!
                     // if we don't have the local storage then AuthGuard won't work
                     setTimeout(() => this.router.navigate([this.returnUrl]), 2000);
+                    // bit of a hack here but if we don't manage to navigate due to token issues then we drop out of loading
+                    setTimeout(() => this.loading = false, 2000);
                 },
                 error => {
                     this.alertService.error(error);
