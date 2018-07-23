@@ -53,7 +53,10 @@ export class PhoneStatesComponent implements OnInit {
     ) {}
 
     ngOnInit () {
-        if (this.nvmService.isTokenExpired()) {
+        if (!this.nvmService.isTokenExpired()) {
+            console.log('token still good');
+        } else {
+            console.log('token has expired!');
             this.authenticationService.getToken();
         }
 

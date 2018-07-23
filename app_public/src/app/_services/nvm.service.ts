@@ -18,6 +18,7 @@ import 'rxjs/add/operator/toArray';
 // import { appConfig } from '../app.config';
 import { INvmToken, IAvailAgents, IListAgents, IAgentStates } from '../_models/index';
 import { environment } from '../../environments/environment';
+import { jsonpCallbackContext } from '../../../node_modules/@angular/common/http/src/module';
 
 
 @Injectable()
@@ -136,8 +137,10 @@ export class NvmService {
     }
 
     public isTokenExpired() {
-        const tokenExpiresAt = new Date(localStorage.getItem('tokenExpiry')); // .replace('Z', '').substring(1, 20));
+        const tokenExpiresAt = new Date(localStorage.getItem('tokenExpiry').substring(1, 19) + 'Z');
         const today = new Date();
+        // console.log(tokenExpiresAt);
+        // console.log(today);
 
         if (tokenExpiresAt) {
           if (isDate(tokenExpiresAt)) {

@@ -10,20 +10,36 @@ import { IAgent } from '../_models/agent';
 })
 export class HomeListComponent implements OnInit {
 
+  filteredAgents: IAgent[];
+  agents: IAgent[];
+
+  _listFilter: string;
+    get listFilter(): string {
+        return this._listFilter;
+    }
+    set listFilter(value: string) {
+        this._listFilter = value;
+        this.filteredAgents = this.listFilter ? this.performFilter(this.listFilter) : this.agents;
+    }
+
   constructor(private supportAppDataService: SupportAppDataService) { }
 
-  agents: IAgent[];
+  performFilter(filterBy: string): IAgent[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.agents.filter((agent: IAgent) =>
+          agent.name.toLocaleLowerCase().indexOf(filterBy) !== -1);
+  }
 
   private getAgents(): void {
     this.supportAppDataService
       .getAgents()
         .then(foundAgents => {
           this.agents = foundAgents;
+          this.filteredAgents = this.agents;
         });
   }
 
   ngOnInit() {
-      // console.log(localStorage.getItem('currentUser'));
       this.getAgents();
   }
 

@@ -60,6 +60,6 @@ export class PoliciesComponent implements OnInit {
     }
 
     cancel() {
-      this.router.navigate(['']);
+      this.router.navigate(['/']);
     }
 }
