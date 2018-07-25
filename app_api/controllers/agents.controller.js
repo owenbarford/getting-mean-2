@@ -20,16 +20,21 @@ const agentsCreate = function(req, res) {
         products: req.body.products.split(","),
         team: req.body.team,
         workingTimes: [{
-            days: req.body.days,
-            opening: req.body.start,
-            closing: req.body.end,
-            closed: req.body.closed,
-          }, {
-            days: req.body.days2,
-            opening: req.body.start2,
-            closing: req.body.end2,
-            closed: req.body.closed2,
-          }]
+                days: req.body.days1,
+                start: req.body.start1,
+                end: req.body.end1,
+                closed: req.body.closed1
+        }]
+        //     days: req.body.days1,
+        //     start: req.body.start1,
+        //     end: req.body.end1,
+        //     closed: req.body.closed1,
+        //   }, {
+        //     days: req.body.days2,
+        //     start: req.body.start2,
+        //     end: req.body.end2,
+        //     closed: req.body.closed2,
+        //   }]
     }, (err, agent) => {
         if (err){
             res
@@ -103,19 +108,24 @@ const agentsUpdateOne = function (req, res) {
         agent.role = req.body.role;
         agent.roleDesc = req.body.roleDesc;
         agent.address = req.body.address;
-        agent.products = req.body.products.split(",");
+        agent.products = (req.body.products + '').split(",");
         agent.team = req.body.team;
         agent.workingTimes = [{
             days: req.body.days1,
             start: req.body.start1,
             end: req.body.end1,
-            closed: req.body.closed1,
-          }, {
-            days: req.body.days2,
-            start: req.body.start1,
-            end: req.body.end2,
-            closed: req.body.closed2,
-          }];
+            closed: req.body.closed1
+        }]
+        //     days: req.body.days1,
+        //     start: req.body.start1,
+        //     end: req.body.end1,
+        //     closed: req.body.closed1,
+        //   }, {
+        //     days: req.body.days2,
+        //     start: req.body.start2,
+        //     end: req.body.end2,
+        //     closed: req.body.closed2,
+        //   }];
         agent.save((err, agent) => {
           if (err) {
             res

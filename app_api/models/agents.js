@@ -28,8 +28,8 @@ const agentSchema = new mongoose.Schema({
     team: {
         type: String,
         required: true
-    }
-    
+    },
+    workingTimes: [workingTimesSchema]
 });
 
 mongoose.model('Agent', agentSchema);

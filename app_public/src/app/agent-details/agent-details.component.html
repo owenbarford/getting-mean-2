@@ -1,4 +1,11 @@
 <div class="row">   
+  <div class="form-group row">
+    <button type="button" routerLink="/newagent" class="btn btn-primary float-right" style="margin-left:15px">Add agent</button>
+    <button type="button" routerLink="/editagent/{{agent._id}}" class="btn btn-primary float-right" style="margin-left:15px">Edit agent</button>
+    <button type="button" class="btn btn-primary float-right" style="margin-left:15px" (click)="deleteAgent()">Delete agent</button>
+  </div>
+</div>
+<div class="row">
   <div class="col-12 col-md-6">     
     <p>{{ agent.address }}</p>     
     <div class="card card-primary">       

@@ -3,8 +3,9 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { IAgent, IPolicy } from '../_models/index';
-// import { appConfig } from '../app.config';
 import { environment } from '../../environments/environment';
+// import { appConfig } from '../app.config';
+
 
 @Injectable()
 export class SupportAppDataService {
@@ -12,6 +13,8 @@ export class SupportAppDataService {
   constructor(private http: Http) { }
 
   policy: IPolicy;
+
+  // Agents
 
   public getAgents(): Promise<IAgent[]> {
     // environment.API_URL replaces appConfig.apiUrl
@@ -32,6 +35,38 @@ export class SupportAppDataService {
       .then(response => response.json() as IAgent)
       .catch(this.handleError);
   }
+
+  public addNewAgent(formData: any): Promise<any> {
+    // process.env.API_URL replaces appConfig.apiUrl
+    const url = `${environment.API_URL}/agents`;
+    return this.http
+      .post(url, formData)
+      .toPromise()
+      .then(response => response.json() as any)
+      .catch(this.handleError);
+  }
+
+  public updateAgent(data): Promise<any> {
+    // environment.API_URL replaces appConfig.apiUrl
+    const url = `${environment.API_URL}/agents/${data._id}`;
+    return this.http
+      .put(url, data)
+      .toPromise()
+      .then(response => response.json() as any)
+      .catch(this.handleError);
+  }
+
+  public deleteAgent(_id: string): Promise<any> {
+    // process.env.API_URL replaces appConfig.apiUrl
+    const url = `${environment.API_URL}/agents/${_id}`;
+    return this.http
+      .delete(url, _id)
+      .toPromise()
+      .then(response => response.json() as any)
+      .catch(this.handleError);
+  }
+
+  // Policies
 
   public getPolicies(): Promise<IPolicy[]> {
     // environment.API_URL replaces appConfig.apiUrl
@@ -83,10 +118,12 @@ export class SupportAppDataService {
       .catch(this.handleError);
   }
 
-private handleError(error: any): Promise<any> {
-  console.error('Something has gone wrong, error');
-  return Promise.reject(error.message || error);
-}
+  // Error Handling
+
+  private handleError(error: any): Promise<any> {
+    console.error('Something has gone wrong, error');
+    return Promise.reject(error.message || error);
+  }
 
 }
 

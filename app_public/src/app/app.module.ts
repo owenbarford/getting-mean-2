@@ -29,6 +29,8 @@ import { DetailsPolicyPageComponent } from './details-policy-page/details-policy
 import { PolicyDetailsComponent } from './policy-details/policy-details.component';
 import { PolicyAddComponent } from './policy-add/policy-add.component';
 import { PolicyEditComponent } from './policy-edit/policy-edit.component';
+import { AgentAddComponent } from './agent-add/agent-add.component';
+import { AgentEditComponent } from './agent-edit/agent-edit.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { PolicyEditComponent } from './policy-edit/policy-edit.component';
     PolicyDetailsComponent,
     PolicyAddComponent,
     PolicyEditComponent,
+    AgentAddComponent,
+    AgentEditComponent,
     LoadingSpinnerComponent,
     OrderByPipe
   ],

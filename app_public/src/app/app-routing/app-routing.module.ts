@@ -15,6 +15,8 @@ import { PoliciesComponent } from '..//policies/index';
 import { DetailsPolicyPageComponent } from '../details-policy-page/details-policy-page.component';
 import { PolicyAddComponent } from '../policy-add/policy-add.component';
 import { PolicyEditComponent } from '../policy-edit/policy-edit.component';
+import { AgentAddComponent } from '../agent-add/agent-add.component';
+import { AgentEditComponent } from '../agent-edit/agent-edit.component';
 
 const routes: Routes = [{
     path: '',
@@ -29,6 +31,16 @@ const routes: Routes = [{
   {
     path: 'agent/:agentId',
     component: DetailsPageComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'newagent',
+    component: AgentAddComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'editagent/:_id',
+    component: AgentEditComponent,
     canActivate: [AuthGuard]
   },
   {

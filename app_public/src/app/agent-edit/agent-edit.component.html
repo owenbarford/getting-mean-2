@@ -1,0 +1,48 @@
+<app-page-header [content]="pageContent.header"></app-page-header>
+<div class="col-12">
+  <form *ngIf="editAgentForm" [formGroup]="editAgentForm" (ngSubmit)="updateAgent(editAgentForm)" autocomplete="off" novalidate>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" type="text" formControlName="name" class="form-control" placeholder="Name..." />
+    </div>
+    <div class="form-group">
+      <label for="role">Role:</label>
+      <input id="role" type="text" formControlName="role" class="form-control" placeholder="Role..." />
+    </div>
+    <div class="form-group">
+      <label for="roleDesc">Role Description:</label>
+      <input id="roleDesc" type="text" formControlName="roleDesc" class="form-control" placeholder="Role Description..." />
+    </div>
+    <div class="form-group">
+      <label for="address">Name:</label>
+      <input id="address" type="text" formControlName="address" class="form-control" placeholder="Address..." />
+    </div>
+    <div class="form-group">
+      <label for="products">Products:</label>
+      <input id="products" type="text" formControlName="products" class="form-control" placeholder="Products..." />
+    </div>
+    <div class="form-group">
+      <label for="team">Team:</label>
+      <input id="team" type="text" formControlName="team" class="form-control" placeholder="Team..." />
+    </div>
+    <div class="form-group">
+      <label for="workingTimes">Working Times Days:</label>
+      <input id="days1" type="text" formControlName="days1" class="form-control" placeholder="Working Times Days..." />
+    </div>
+    <div class="form-group">
+      <label for="workingTimes">Working Times Start:</label>
+      <input id="start1" type="text" formControlName="start1" class="form-control" placeholder="Working Times Start..." />
+    </div>
+    <div class="form-group">
+      <label for="workingTimes">Working Times End:</label>
+      <input id="end1" type="text" formControlName="end1" class="form-control" placeholder="Working Times End..." />
+    </div>
+    <div class="form-group">
+      <label for="workingTimes">Working Times Closed:</label>
+      <input id="closed1" type="text" formControlName="closed1" class="form-control" placeholder="Working Times Closed..." />
+    </div>
+    <button type="submit" [disabled]="!editAgentForm.valid" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+  </form>
+</div>
+<app-sidebar class="col-12 col-md-4" [content]="pageContent.sidebar"></app-sidebar>
